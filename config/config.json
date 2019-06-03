@@ -1,0 +1,6 @@
+{
+  "mongoURI": "URI",
+  "jwtSecret": "YourSecret",
+  "CLIENT_ID": "YourClientId",
+  "CLIENT_SECRET": "YourClientSecret"
+}
