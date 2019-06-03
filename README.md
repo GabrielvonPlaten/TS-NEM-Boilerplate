@@ -15,21 +15,21 @@ nodemon app.js
 ```
 
 ---
-## File Strutre
+## Project Strutre
 ```
-+config
-│  config.json
-│  db.js
+config
+│     config.json
+│     db.js
 │
-+middleware-
-│  auth.js
-+models-
-│  User.js
+middleware
+│     auth.js
+models
+│     User.js
 │
-+routes-
-│  api-
-│  auth.js
-│  user.js
+routes
+│─────api
+│     │   auth.js
+│     │   user.js
 │
 │.env
 │.app.js
