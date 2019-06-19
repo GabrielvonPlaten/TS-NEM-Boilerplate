@@ -9,7 +9,11 @@ mv NEM-boilerplate server
 cd server
 ```
 
-Before you start the server locally, you need to change the default values in the config files into your own values. The two most important values are **jwtSecret** and **mongoURI**. After you are done, you are ready to initiate the server using nodemon.
+Before you start the server locally, you need to create a **.net** file on the root folder and add two variables for your jsonwebtoken secret and your mongoDB URIs.
+  + jwtSecret
+  + DB_URI_PROD
+  + DB_URI_DEV
+
 ```
 nodemon app.js
 ```
@@ -18,7 +22,6 @@ nodemon app.js
 ## Project Strutre
 ```
 config
-│     config.json
 │     db.js
 │
 middleware
