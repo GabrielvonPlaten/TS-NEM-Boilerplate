@@ -1,5 +1,6 @@
+require('dotenv').config(); // Use node variables
+require('./config/db'); // Connect to database
 const express = require('express');
-const { connectDB } = require('./config/db');
 
 // Routes
 const userRouters = require('./routes/api/user');
@@ -7,9 +8,6 @@ const authRouters = require('./routes/api/auth');
 
 // Initialize app
 const app = express();
-
-//Connect Database
-connectDB();
 
 // Inits Middleware
 app.use(express.json({ extended: false }));
