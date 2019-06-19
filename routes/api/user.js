@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const jwtSecret = process.env.jwtSecret;
 const { check, validationResult } = require('express-validator/check');
 
 // Models
 const User = require('../../models/User');
-
 
 // @route   post /api/users
 // @desc    Register user
@@ -44,21 +43,18 @@ router.post('/',
 
       const payload = {
         user: {
-          // mongoose allows .id instead of ._id
           id: user.id
         }
       };
 
       // Change the value of the jwtSecret in the config file in the config folder
-      jwt.sign(payload, config.get('jwtsecret'), { 
+      jwt.sign(payload, jwtSecret, { 
         expiresIn: 360000 
       }, (err, token) => {
         if (err) throw err;
-        res.send({ token });
+        res.send(token);
       });
       
-      // res.status(201).send({ user })
-      // Return jsonwebtoken
     } catch (e) {
       res.status(500).send(e.message);
     }

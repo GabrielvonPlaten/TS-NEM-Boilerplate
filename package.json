@@ -6,9 +6,13 @@
   "repository": "https://github.com/GabrielvonPlaten/NEM-boilerplate.git",
   "author": "Gabriel von Platen <gabrielvonplaten@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "config": "^3.1.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "express-validator": "^5.3.1",
     "jsonwebtoken": "^8.5.1",

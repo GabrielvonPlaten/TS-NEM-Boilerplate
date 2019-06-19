@@ -1,24 +1,16 @@
 const mongoose = require('mongoose');
-const config = require('config');
+mongoose.Promise = global.Promise;
 
-// Change your Database URI in the config file
-const db = config.get('mongoURI');
-const connectDB = async () => {
-  try {
-    await mongoose.connect(db, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
+DB_URI = process.env.NODE_ENV === 'production' ? process.env.DB_URI_PROD : process.env.DB_URI_DEV 
 
-    console.log('MongoDB Connected.');
-  } catch (err) {
-    console.log(err.message);
-    process.exit(1); // Application will fail if a connection is not established
-  }
-};
+
+mongoose.connect(DB_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 
 module.exports = {
-  connectDB,
-};
+  mongoose,
+}

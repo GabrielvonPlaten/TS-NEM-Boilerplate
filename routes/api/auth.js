@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const jwtSecret = process.env.jwtSecret
 const { check, validationResult } = require('express-validator/check');
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
     const userObj = user.toObject();
     delete userObj.password;
 
-    res.status(200).send({ userObj })
+    res.status(200).send(userObj)
   } catch (e) {
     res.status(500).send({ message: "Server error" });
   }
@@ -64,8 +64,7 @@ router.post('/',
         }
       };
 
-      // Change the value of the jwtSecret in the config file in the config folder
-      jwt.sign(payload, config.get('jwtSecret'), {
+      jwt.sign(payload, jwtSecret, {
         // Change this value at your will
         // By default, it is set to 360000, or 5 days
         expiresIn: 360000 
