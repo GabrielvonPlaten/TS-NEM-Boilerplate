@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
+jwtSecret = process.env.jwtSecret
 
 const auth = async (req, res, next) => {
   const token = req.header('x-auth-token');
@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
   
   try {
     // Change the value of the jwtSecret in the config file in the config folder
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded = jwt.verify(token, jwtSecret);
 
     req.user = decoded.user;
     next();
