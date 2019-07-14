@@ -30,7 +30,7 @@ npm / yarn install
 npm / yarn dev
 ```
 
-## Buil
+## Build
 
 ```
 npm / yarn build
