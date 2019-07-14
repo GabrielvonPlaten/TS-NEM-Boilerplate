@@ -1,5 +1,5 @@
 {
-  "name": "NEM-boilerplate",
+  "name": "TS-NEM-Boilerplate",
   "version": "1.0.0",
   "description": "A basic back end boilerplate using Node, Express, and Mongoose",
   "main": "app.js",
@@ -7,16 +7,27 @@
   "author": "Gabriel von Platen <gabrielvonplaten@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node ./dist/app.js",
+    "dev": "nodemon ./src/app.ts",
+    "build": "tsc -p ."
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/body-parser": "^1.17.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.0",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/mongoose": "^5.5.8",
+    "@types/node": "^12.6.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
-    "express": "^4.17.0",
+    "express": "^4.17.1",
     "express-validator": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.11",
-    "request": "^2.88.0"
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   }
 }
