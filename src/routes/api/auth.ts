@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { check, validationResult } from "express-validator/check";
+import { check, validationResult } from "express-validator";
 const jwtSecret: any = process.env.jwtSecret;
 const router = express.Router();
 
