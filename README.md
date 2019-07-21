@@ -1,39 +1,58 @@
-## NEM-Boilerplate
-### A Node, Express, Mongoose boilerplate
+## TS-NEM-Boilerplate
+
+### A Node, Express, Mongoose boilerplate written in Typescript
+
 ---
 
 To install
+
 ```
-git clone https://github.com/GabrielvonPlaten/NEM-boilerplate.git
-mv NEM-boilerplate server
+git clone https://github.com/GabrielvonPlaten/TS-NEM-Boilerplate.git
+mv TS-NEM-Boilerplate server
 cd server
 ```
 
-Before you start the server locally, you need to create a **.net** file on the root folder and add two variables for your jsonwebtoken secret and your mongoDB URIs.
-  + jwtSecret
-  + DB_URI_PROD
-  + DB_URI_DEV
+Before you start the server locally, you need to create a **.env** file on the root folder and add three variables for your jsonwebtoken secret and your mongoDB URIs.
+
+- jwtSecret
+- DB_URI_PROD
+- DB_URI_DEV
+
+## Install
 
 ```
-nodemon app.js
+npm / yarn install
+```
+
+## Run
+
+```
+npm / yarn dev
+```
+
+## Build
+
+```
+npm / yarn build
 ```
 
 ---
+
 ## Project Strutre
+
 ```
 config
-│     db.js
+│     db.ts
 │
 middleware
-│     auth.js
+│     auth.ts
 models
-│     User.js
+│     User.ts
 │
 routes
 │─────api
-│     │   auth.js
-│     │   user.js
+│     │   auth.ts
+│     │   user.ts
 │
-│.env
-│.app.js
+│.app.ts
 ```
