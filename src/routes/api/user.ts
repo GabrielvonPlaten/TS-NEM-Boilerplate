@@ -1,28 +1,28 @@
-import express, { Response } from "express";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import express, { Response } from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 const router = express.Router();
 const jwtSecret: any = process.env.jwtSecret;
-import { check, validationResult } from "express-validator";
+import { check, validationResult } from 'express-validator';
 
 // Models
-import { User } from "../../models/User";
+import { User } from '../../models/User';
 
 // @route   post /api/user
 // @desc    Register user
 // @access  Public
 router.post(
-  "/",
+  '/',
   [
     // Second parameter is the error message
-    check("name", "Name is required")
+    check('name', 'Name is required')
       .not()
       .isEmpty(),
-    check("email", "Please include a valid email.").isEmail(),
+    check('email', 'Please include a valid email.').isEmail(),
     check(
-      "password",
-      "Plaese enter a password with 6 or more characters"
-    ).isLength({ min: 6 })
+      'password',
+      'Plaese enter a password with 6 or more characters',
+    ).isLength({ min: 6 }),
   ],
   async (req: any, res: Response) => {
     const errors = validationResult(req);
@@ -40,7 +40,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ message: "User already exists." }] });
+          .json({ errors: [{ message: 'User already exists.' }] });
       }
 
       user = new User({ name, email, password });
@@ -51,8 +51,8 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       // Change the value of the jwtSecret in the config file in the config folder
@@ -60,17 +60,17 @@ router.post(
         payload,
         jwtSecret,
         {
-          expiresIn: 360000
+          expiresIn: 360000,
         },
         (err: any, token: string) => {
           if (err) throw err;
           res.send(token);
-        }
+        },
       );
     } catch (e) {
       res.status(500).send(e.message);
     }
-  }
+  },
 );
 
 module.exports = router;
