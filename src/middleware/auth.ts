@@ -1,16 +1,16 @@
-import jwt from "jsonwebtoken";
-import { Response, NextFunction } from "express";
-import { UserRequest } from "../interfaces/userInterface";
+import jwt from 'jsonwebtoken';
+import { Response, NextFunction } from 'express';
+import { UserRequest } from '../interfaces/userInterface';
 const jwtSecret: any = process.env.jwtSecret;
 
 const auth: any = async (
   req: UserRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
-  const token: any = req.header("x-auth-token");
+  const token: any = req.header('x-auth-token');
   if (!token) {
-    return res.status(401).send({ message: "No token. Authorization denied." });
+    return res.status(401).send({ message: 'No token. Authorization denied.' });
   }
 
   try {
@@ -20,7 +20,7 @@ const auth: any = async (
     req.user = decoded.user;
     next();
   } catch (e) {
-    res.status(401).send({ message: "Invalid token." });
+    res.status(401).send({ message: 'Invalid token.' });
   }
 };
 
